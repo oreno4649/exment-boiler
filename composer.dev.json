@@ -11,7 +11,7 @@
         "php": "^7.2.5|^8.0",
         "aacotroneo/laravel-saml2": "^2.1",
         "dms/phpunit-arraysubset-asserts": "~0.1",
-        "exceedone/exment": "^4.3",
+        "exceedone/exment": "dev-master",
         "fideloper/proxy": "^4.4",
         "laravel/browser-kit-testing": "~5.2",
         "laravel/framework": "^6.20.26",
@@ -46,7 +46,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Exceedone\\Exment\\": "./exment/src"
         },
         "classmap": [
             "database/seeds",
@@ -70,6 +71,31 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+	"exment:test:init": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php artisan exment:inittest --yes"
+        ],
+        "exment:test:browser": [
+            "@composer run exment:test:init",
+            "phpunit ./vendor/exceedone/exment/tests/Browser"
+        ],
+        "exment:test:feature": [
+            "@composer run exment:test:init",
+            "phpunit ./vendor/exceedone/exment/tests/Feature"
+        ],,
+        "exment:test:unit": [
+            "@composer run exment:test:init",
+            "phpunit ./vendor/exceedone/exment/tests/Unit"
         ]
-    }
+    },
+    "repositories": [
+	{
+            "type": "path",
+            "url": "./exment",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
 }
