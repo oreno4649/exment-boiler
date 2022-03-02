@@ -83,7 +83,7 @@
         "exment:test:feature": [
             "@composer run exment:test:init",
             "phpunit ./vendor/exceedone/exment/tests/Feature"
-        ],,
+        ],
         "exment:test:unit": [
             "@composer run exment:test:init",
             "phpunit ./vendor/exceedone/exment/tests/Unit"
