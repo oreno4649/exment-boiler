@@ -6,19 +6,26 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "dms/phpunit-arraysubset-asserts": "~0.1",
+        "exceedone/exment": "dev-master",
+        "fideloper/proxy": "^4.4",
+        "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
+        "laravel/browser-kit-testing": "~6.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.14.1",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "laravel/ui": "^3.0",
+        "symfony/css-selector": "~5.2"
     },
     "require-dev": {
+        "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {
         "psr-4": {
@@ -45,18 +52,35 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "exment:test:init": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php artisan exment:inittest --yes"
+        ],
+        "exment:test:browser": [
+            "@composer run exment:test:init",
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit ./vendor/exceedone/exment/tests/Browser"
+        ],
+        "exment:test:feature": [
+            "@composer run exment:test:init",
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit ./vendor/exceedone/exment/tests/Feature -d memory_limit=512M"
+        ],
+        "exment:test:unit": [
+            "@composer run exment:test:init",
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit ./vendor/exceedone/exment/tests/Unit"
+        ],
+        "exment:test": [
+            "@composer run exment:test:init",
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit ./vendor/exceedone/exment/tests"
         ]
     },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
     "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
 }
