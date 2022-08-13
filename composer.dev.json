@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "ext-ldap": "*",
         "dms/phpunit-arraysubset-asserts": "~0.1",
         "exceedone/exment": "dev-master",
         "fideloper/proxy": "^4.4",
@@ -16,7 +17,18 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.0",
-        "symfony/css-selector": "~5.2"
+        "symfony/css-selector": "~5.2",
+        "pragmarx/google2fa": "^8.0",
+        "simplesoftwareio/simple-qrcode": "^2.0.0",
+        "laravel/socialite": "~5.1",
+        "aacotroneo/laravel-saml2": "^2.1",
+        "league/flysystem-ftp": "~3.0",
+        "phpseclib/phpseclib": "^2.0",
+        "league/flysystem-sftp": "~3.0",
+        "league/flysystem-aws-s3-v3": "~3.0",
+        "league/flysystem-azure-blob-storage": "~3.0",
+        "spatie/flysystem-dropbox": "^2.0.5",
+        "adldap2/adldap2": "^10.0"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",
@@ -26,7 +38,8 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
-        "nunomaduro/larastan": "^2.1"
+        "nunomaduro/larastan": "^2.1",
+        "barryvdh/laravel-ide-helper": "^2.12"
     },
     "autoload": {
         "psr-4": {
