@@ -38,7 +38,7 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
-        "nunomaduro/larastan": "^2.1",
+        "nunomaduro/larastan": "^2.2",
         "barryvdh/laravel-ide-helper": "^2.12"
     },
     "autoload": {
